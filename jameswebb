@@ -1,0 +1,15 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options as chromeOptions
+from selenium.webdriver.common.by import By
+chrome_options = chromeOptions()
+chrome_options.add_argument('--headless')
+driver = webdriver.Chrome(options=chrome_options)
+driver.get('https://www.jwst.nasa.gov/content/webbLaunch/whereIsWebb.html?units=metric')
+kmsAway = driver.find_element(By.ID, 'kmsEarth')
+kmsToL2 = driver.find_element(By.ID, 'kmsToL2')
+for i in range(10):
+    print(kmsAway.text)
+    print(kmsToL2.text)
+    time.sleep(5)
+driver.quit()
